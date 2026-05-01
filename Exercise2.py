@@ -62,6 +62,7 @@ def exercise_3_polymorphism():
         print(payment.get_payment_status())
 
 if __name__ == "__main__":
+    print("\n--- Current Balance ---")
     payment1 = CreditCard("John Doe", 100, 200)
     payment2 = MealPlan("Jane Smith", 80)
 
