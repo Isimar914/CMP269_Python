@@ -2,6 +2,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+# ==========================================
+# PART A: VISUALIZATION
+# ==========================================
+
 def get_crypto_data():
     """Helper function to load mock crypto data."""
     return pd.DataFrame({
@@ -14,11 +18,11 @@ def task_1_trend_line():
     print("--- Task 1: Building a Trend Line ---")
     df = get_crypto_data()
 
-    plt.plot(df["Day"], df["Bitcoin"], marker = 'o')
+    plt.plot(df["Day"], df["Bitcoin"], marker = "o")
 
     plt.title("Bitcoin Price Over 7 Days")
-    plt.xlabel('Day')
-    plt.ylabel('Bitcoin Price ($)')
+    plt.xlabel("Day")
+    plt.ylabel("Bitcoin Price ($)")
 
     plt.show()
 
@@ -34,6 +38,20 @@ def task_2_seaborn_comparison():
     sns.barplot(x="Portfolio", y="Value", data=df)
     plt.title("Portfolio Value Comparison")
     plt.show()
+
+# ==========================================
+# PART B: TESTABLE LOGIC AND PYTEST ASSERTION
+# ==========================================
+
+def calculate_profit(buy_price, sell_price):
+    return sell_price - buy_price
+
+def test_calculate_profit():
+    df = get_crypto_data()
+
+    buy_price = df["Bitcoin"][0]
+    sell_price = df["Bitcoin"][6]
+    assert calculate_profit(buy_price, sell_price) == 8000
 
 if __name__ == "__main__":
     # Uncomment to test visuals during development
